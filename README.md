@@ -1,6 +1,6 @@
 <img src="./fixpoint-diagram.jpg" width="600px" style="border: 1px solid #ccc"></img>
 # Slot-Attention-Iterative-Refinement
-Unofficial Implementation of papers [Object Representations as Fixed Points: Training Iterative Refinement Algorithms with Implicit Differentiation](https://arxiv.org/pdf/2207.00787.pdf) and 
+Unofficial Implementation of papers [Object Representations as Fixed Points: Training Iterative Refinement Algorithms with Implicit Differentiation](https://arxiv.org/pdf/2207.00787.pdf), [SLATE](https://arxiv.org/pdf/2110.11405.pdf), and
 [Object-Centric Learning with Slot Attention](https://arxiv.org/abs/2006.15055) by Phan Nhat Huy
 
 ## To do:
@@ -21,7 +21,9 @@ Model, Training and Testing config.
 
 Combining all parts we have following general configuration file.
 ```yaml
-Model:
+model:
+    model_type: implicit_slate #slate, vanilla_slot
+    encoder_type: dvae
     num_slots: 4
     num_heads: 4
     num_layers: 2
@@ -29,8 +31,8 @@ Model:
     dropout: 0.1
     implicit_diff: True
     max_iter_fwd: 10
-Training:
-    data_type: CLEVR
+training:
+    data_type: clevr
     batch_size: 64
     num_workers: 4
     num_epochs: 100
@@ -40,14 +42,14 @@ Training:
     save_interval: 1000
     save_dir: ./checkpoints
     device: cuda
-Testing:
-    data_type: CLEVR
+testing:
+    data_type: clevr
     batch_size: 64
-    num_workers: 4  
+    num_workers: 4   
 ```
-To run, just input the config path as argument
+To reconstruct the results in the paper of Implicit Slot Attention with CLEVR dataset, just run
 ```
-python3 main.py --cfg configs/baseline.yaml
+python3 main.py --cfg configs/im_slate_clevr.yaml
 ```
 ## Citation
 ```bibtex
@@ -57,6 +59,14 @@ python3 main.py --cfg configs/baseline.yaml
   journal={ArXiv},
   year={2020},
   volume={abs/2006.15055}
+}
+@inproceedings{
+      singh2022illiterate,
+      title={Illiterate DALL-E Learns to Compose},
+      author={Gautam Singh and Fei Deng and Sungjin Ahn},
+      booktitle={International Conference on Learning Representations},
+      year={2022},
+      url={https://openreview.net/forum?id=h0OYV0We3oh}
 }
 @article{Chang2022ObjectRA,
   title={Object Representations as Fixed Points: Training Iterative Refinement Algorithms with Implicit Differentiation},

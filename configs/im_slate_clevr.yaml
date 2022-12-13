@@ -1,0 +1,25 @@
+model:
+    model_type: implicit_slate #slate, vanilla_slot
+    encoder_type: dvae
+    num_slots: 4
+    num_heads: 4
+    num_layers: 2
+    feat_size: 256
+    dropout: 0.1
+    implicit_diff: True
+    max_iter_fwd: 10
+training:
+    data_type: clevr
+    batch_size: 64
+    num_workers: 4
+    num_epochs: 100
+    lr: 0.0001
+    weight_decay: 0.0001
+    log_interval: 100
+    save_interval: 1000
+    save_dir: ./checkpoints
+    device: cuda
+testing:
+    data_type: clevr
+    batch_size: 64
+    num_workers: 4  
