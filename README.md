@@ -1,4 +1,4 @@
-<img src="./fixpoint-diagram.jpg" width="600px" style="border: 1px solid #ccc"></img>
+<img src="./fixpoint-diagram.jpg" width="700px" style="border: 1px solid #ccc"></img>
 # Slot-Attention-Iterative-Refinement
 Unofficial Implementation of papers [Object Representations as Fixed Points: Training Iterative Refinement Algorithms with Implicit Differentiation](https://arxiv.org/pdf/2207.00787.pdf), [SLATE](https://arxiv.org/pdf/2110.11405.pdf), and
 [Object-Centric Learning with Slot Attention](https://arxiv.org/abs/2006.15055) by Phan Nhat Huy
