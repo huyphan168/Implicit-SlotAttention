@@ -1,13 +1,11 @@
+import numpy as np
+import torch
+from torch.utils.data import DataLoader
 import os
 import os.path as osp
 from omegaconf import OmegaConf
 from tqdm import tqdm
-import numpy as np
-import torch
-import torch.nn as nn
-import torch.nn.functional as F
 import argparse
-from torch.utils.data import DataLoader
 from src.slot_attention import build_model
 from src.data import build_dataset
 
@@ -47,7 +45,7 @@ def main() -> None:
         model.train()
         for idx, data in tqdm(enumerate(train_loader)):
             optimizer.zero_grad()
-            loss = model(data)
+            loss = model(data, device)
             loss.backward()
             optimizer.step()
             if idx % cfg.training.log_interval == 0:
@@ -58,10 +56,9 @@ def main() -> None:
         # validation
         model.eval()
         for data in tqdm(val_loader):
-            loss = model(data)
+            loss = model(data, device)
             print(f"Validation Loss: {loss}")
-
-
+    
 
 if __name__ == "__main__":
     main()

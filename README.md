@@ -4,10 +4,10 @@ Unofficial Implementation of papers [Object Representations as Fixed Points: Tra
 [Object-Centric Learning with Slot Attention](https://arxiv.org/abs/2006.15055) by Phan Nhat Huy
 
 ## To do:
-- [] Implement Slot Attention
-- [] Implement Implicit Differentiation for Slot Attention
-- [] Running experiments with CLEVR dataset
-- [] Running experiments with Reasoning dataset
+- [x] Implement Slot Attention
+- [ ] Implement Implicit Differentiation for Slot Attention
+- [ ] Running experiments with CLEVR dataset
+- [ ] Running experiments with Reasoning dataset
 
 ## Installation
 Current version of implementation has tested with pytorch 2.0 but it should work with pytorch > 1.0.0. To install all dependencies, just run.
@@ -51,6 +51,16 @@ To reconstruct the results in the paper of Implicit Slot Attention with CLEVR da
 ```
 python3 main.py --cfg configs/im_slate_clevr.yaml
 ```
+## Code Files
+This repository provides the following Files
+- `main.py` : Main file to run the code.
+- `evaluation.py`: Evaluation file to evaluate the model depends on user specificed tasks.
+- `src/backbones` : Implementation of different backbones including DVAE, ResNet for feature extraction.
+- `src/slot_attention.py` : Implementation of Main models including SLATE, Slot Attention with or without implicit differentiation.
+- `src/data` : Implementation of CLEVR, COCO, and ShapeStacks dataset.
+- `src/utils` : Implementation of some useful functions.
+- `src/decoder.py`: Implementation of decoder for needed tasks.
+
 ## Citation
 ```bibtex
 @article{Locatello2020ObjectCentricLW,

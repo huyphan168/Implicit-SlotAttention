@@ -1,6 +1,7 @@
 model:
     model_type: implicit_slate #slate, vanilla_slot
     encoder_type: dvae
+    task: set_prediction #reconstruction
     num_slots: 4
     num_heads: 4
     num_layers: 2
