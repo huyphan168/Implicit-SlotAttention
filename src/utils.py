@@ -3,6 +3,17 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
+def gru_cell(input_size, hidden_size, bias=True):
+    m = nn.GRUCell(input_size, hidden_size, bias)
+    
+    nn.init.xavier_uniform_(m.weight_ih)
+    nn.init.orthogonal_(m.weight_hh)
+    
+    if bias:
+        nn.init.zeros_(m.bias_ih)
+        nn.init.zeros_(m.bias_hh)
+    
+    return m
 
 def conv2d(in_channels, out_channels, kernel_size, stride=1, padding=0,
            dilation=1, groups=1, bias=True, padding_mode='zeros',

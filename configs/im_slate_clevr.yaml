@@ -5,8 +5,10 @@ model:
     num_slots: 4
     num_heads: 4
     num_layers: 2
-    feat_size: 256
+    mlp_hidden_size: 256
+    slot_size: 512
     dropout: 0.1
+    epsilon: 1e-4
     implicit_diff: True
     max_iter_fwd: 10
 training:
